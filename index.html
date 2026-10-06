@@ -107,7 +107,7 @@
                         <i class="fa-brands fa-whatsapp text-emerald-400 text-xl mb-2"></i>
                         <p class="text-[10px] font-bold uppercase tracking-widest text-slate-300">WhatsApp</p>
                     </a>
-                    <button onclick="descargarVCard()" class="cyber-btn rounded-lg p-5 text-center w-full">
+                    <button onclick="abrirVCard()" class="cyber-btn rounded-lg p-5 text-center w-full">
                         <i class="fa-solid fa-id-card text-blue-400 text-xl mb-2"></i>
                         <p class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Contacto</p>
                     </button>
@@ -120,10 +120,10 @@
 
             <div id="view-qr" class="hidden text-center py-4 fade-in">
                 <div class="bg-white p-3 inline-block rounded-2xl shadow-inner border-4 border-cyan-500/30">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=http://vc.mabrix.cl" 
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fmabrix1977.github.io%2FVC%2F" 
                          class="w-48 h-48" alt="QR Code">
                 </div>
-                <p class="text-cyan-400 font-mono text-sm mt-4 tracking-widest">LINK: VC.MABRIX.CL</p>
+                <p class="text-cyan-400 font-mono text-sm mt-4 tracking-widest">LINK: MABRIX1977.GITHUB.IO/VC/</p>
                 
                 <button onclick="toggleView(false)" class="mt-8 text-slate-400 hover:text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center w-full gap-2 transition-colors">
                     <i class="fa-solid fa-arrow-left"></i> Volver a acciones
@@ -152,15 +152,18 @@
             }
         }
 
-        function descargarVCard() {
-            const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mauricio Muñoz V.\nTITLE:Ingeniero en Informática\nTEL;TYPE=CELL:+56964464059\nEMAIL:fenix.mauricio.mm@gmail.com\nURL:http://vc.mabrix.cl\nEND:VCARD`;
-            const blob = new Blob([vCardData], { type: 'text/vcard' });
+        function abrirVCard() {
+            const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mauricio Muñoz V.\nTITLE:Ingeniero en Informática\nTEL;TYPE=CELL:+56964464059\nEMAIL:fenix.mauricio.mm@gmail.com\nURL:https://mabrix1977.github.io/VC/\nEND:VCARD`;
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'Mauricio_Munoz_V.vcf';
+            a.type = 'text/vcard';
+            a.target = '_blank';
+            document.body.appendChild(a);
             a.click();
-            window.URL.revokeObjectURL(url);
+            a.remove();
+            setTimeout(() => window.URL.revokeObjectURL(url), 1000);
         }
     </script>
 </body>
