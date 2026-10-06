@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mauricio Muñoz V. | Perfil Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap');
+        
+        body { 
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #060b13;
+            color: #e2e8f0;
+        }
+
+        .cyber-card {
+            background: linear-gradient(180deg, #0f172a 0%, #020617 100%);
+            border: 1px solid #0ea5e9;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .photo-frame {
+            position: relative;
+            border: 2px solid #22d3ee;
+            padding: 4px;
+        }
+
+        .photo-frame::before, .photo-frame::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #22d3ee;
+        }
+
+        .photo-frame::before { top: -5px; left: -5px; border-right: 0; border-bottom: 0; }
+        .photo-frame::after { bottom: -5px; right: -5px; border-left: 0; border-top: 0; }
+
+        .neon-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+            box-shadow: 0 0 8px #22d3ee;
+        }
+
+        .cyber-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cyber-btn:hover {
+            background: rgba(34, 211, 238, 0.1);
+            border-color: #22d3ee;
+            transform: translateY(-2px);
+        }
+
+        /* Animación suave para transiciones */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-md w-full cyber-card rounded-xl overflow-hidden shadow-2xl">
+        
+        <div class="h-1 w-full bg-cyan-500 opacity-50"></div>
+
+        <div class="px-6 py-8">
+            <div class="flex items-center gap-6 mb-8">
+                <div class="photo-frame rounded-lg">
+                    <img src="https://image.cdn2.seaart.me/2024-03-06/cnjs0m5e878c73f720b0/d60b0ef7542dce9c075a9038093369f4ac85e7f5_high.webp?w=400&h=400&fit=crop" 
+                         class="w-28 h-28 object-cover rounded-md" alt="Mauricio Muñoz V.">
+                </div>
+                
+                <div class="flex-1">
+                    <h1 class="text-3xl font-bold text-white uppercase tracking-tighter leading-none mb-2">
+                        Mauricio <br> Muñoz V.
+                    </h1>
+                    <p class="text-cyan-400 font-bold text-sm uppercase tracking-widest">
+                        Ingeniero en Informática
+                    </p>
+                    <p class="text-slate-500 text-xs font-mono mt-1">MABRIX.CL</p>
+                </div>
+            </div>
+
+            <div class="neon-line mb-8"></div>
+
+            <div id="view-buttons" class="space-y-6 fade-in">
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="tel:964464059" class="cyber-btn rounded-lg p-5 text-center">
+                        <i class="fa-solid fa-phone text-cyan-400 text-xl mb-2"></i>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Llamar</p>
+                    </a>
+                    <a href="mailto:fenix.mauricio.mm@gmail.com" class="cyber-btn rounded-lg p-5 text-center">
+                        <i class="fa-solid fa-envelope text-orange-400 text-xl mb-2"></i>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Correo</p>
+                    </a>
+                    <a href="https://wa.me/56964464059" target="_blank" class="cyber-btn rounded-lg p-5 text-center">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 text-xl mb-2"></i>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-300">WhatsApp</p>
+                    </a>
+                    <button onclick="descargarVCard()" class="cyber-btn rounded-lg p-5 text-center w-full">
+                        <i class="fa-solid fa-id-card text-blue-400 text-xl mb-2"></i>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-slate-300">Contacto</p>
+                    </button>
+                </div>
+
+                <button onclick="toggleView(true)" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-xl text-xs uppercase tracking-widest transition-all shadow-lg shadow-red-900/40 active:scale-95">
+                    <i class="fa-solid fa-qrcode mr-2"></i> Obtener mi Archivo
+                </button>
+            </div>
+
+            <div id="view-qr" class="hidden text-center py-4 fade-in">
+                <div class="bg-white p-3 inline-block rounded-2xl shadow-inner border-4 border-cyan-500/30">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=http://vc.mabrix.cl" 
+                         class="w-48 h-48" alt="QR Code">
+                </div>
+                <p class="text-cyan-400 font-mono text-sm mt-4 tracking-widest">LINK: VC.MABRIX.CL</p>
+                
+                <button onclick="toggleView(false)" class="mt-8 text-slate-400 hover:text-white text-xs font-bold uppercase tracking-widest flex items-center justify-center w-full gap-2 transition-colors">
+                    <i class="fa-solid fa-arrow-left"></i> Volver a acciones
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-black/40 border-t border-cyan-900/30 p-4 text-center">
+            <p class="text-[10px] text-slate-500 uppercase font-mono tracking-widest">
+                System Sync: OK • v.2026.04
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function toggleView(showQR) {
+            const btnView = document.getElementById('view-buttons');
+            const qrView = document.getElementById('view-qr');
+            
+            if (showQR) {
+                btnView.classList.add('hidden');
+                qrView.classList.remove('hidden');
+            } else {
+                qrView.classList.add('hidden');
+                btnView.classList.remove('hidden');
+            }
+        }
+
+        function descargarVCard() {
+            const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mauricio Muñoz V.\nTITLE:Ingeniero en Informática\nTEL;TYPE=CELL:+56964464059\nEMAIL:fenix.mauricio.mm@gmail.com\nURL:http://vc.mabrix.cl\nEND:VCARD`;
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Mauricio_Munoz_V.vcf';
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
